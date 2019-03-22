@@ -1,0 +1,21 @@
+{
+    "name": "pos-lite",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "postinstall": "install-app-deps"
+    },
+    "author": "Dan Shahin <dan@danshahin.com> (http://www.danshahin.com/)",
+    "license": "MIT",
+    "devDependencies": {
+        "electron": "4.1.1",
+        "electron-builder": "20.39.0"
+    },
+    "dependencies": {
+        "electron-rebuild": "1.8.4",
+        "sqlite3": "4.0.6"
+    }
+}
