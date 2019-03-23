@@ -1,1 +1,29 @@
-<h1>hey now</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+</head>
+
+<body>
+    <h1>hey now</h1>
+    We are using node
+    <script>
+        document.write(process.versions.node)
+    </script>, Chrome
+    <script>
+        document.write(process.versions.chrome)
+    </script>, and Electron
+    <script>
+        document.write(process.versions.electron)
+    </script>.
+
+    <hr/>
+    <input type="text" id="todo" placeholder="to do..." />
+    <button id="add">add</button>
+    <div id="list"></div>
+    <script src="renderer.js"></script>
+</body>
+
+</html>
