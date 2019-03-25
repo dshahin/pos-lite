@@ -11,7 +11,7 @@ exports.setupDB = function(config) {
         if (err) {
             console.error(err.message);
         }
-        console.log('Connected to the test database.');
+        console.log('Connected to the pos database.');
     });
 
 
@@ -34,7 +34,8 @@ exports.getTodos = function(config) {
     let db = this.setupDB(config);
     let todos = [];
     return new Promise((resolve, reject) => {
-        db.all("SELECT * FROM todo", function(err, rows) {
+        db.all("SELECT rowid, done, text FROM todo", function(err, rows) {
+            db.close();
             if (err) {
                 reject(err);
             }
@@ -47,7 +48,6 @@ exports.getTodos = function(config) {
 
 exports.addTodo = function(config, todo) {
     return new Promise((resolve, reject) => {
-
 
         let db = this.setupDB(config);
         db.serialize(() => {
@@ -62,16 +62,19 @@ exports.addTodo = function(config, todo) {
                 ],
                 function(err) {
                     if (err) {
-                        return console.log(err.message);
+                        reject(err);
                     }
                     // get the last insert id
                     console.log(`A row has been inserted with rowid ${this.lastID}`);
+                    db.close();
+                    resolve(this.lastID);
+
                 });
+
 
 
         });
 
-        db.close();
-        resolve();
+
     });
 }
